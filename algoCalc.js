@@ -11,6 +11,11 @@ const assetsCount = args[0];
 const receiversCount = args[1];
 const freeze = args[2];
 
+async() => {
+    const ALGORAND_CURRENT_PRICE = await Utils.getCryptoCurrentInfo('alg');
+    console.log(ALGORAND_CURRENT_PRICE)
+};
+
 if (!assetsCount || !receiversCount) {
     console.error('Missing parameters.');
     console.error('Run with npm start [assetsCount] [receiversCount] [freezeTrueFalse]');
@@ -18,7 +23,6 @@ if (!assetsCount || !receiversCount) {
 }
 
 console.log(`Calculating fees to create ${assetsCount} ${assetsCount > 1 ? 'assets' : 'asset'} and sending it to ${receiversCount} ${receiversCount > 1 ? 'receivers' : 'receiver'}\n`);
-
 
 let total_fee = 0;
 
@@ -57,4 +61,4 @@ if (freeze === 'true') {
 
 
 // TOTAL
-console.log(`\n\nTotal fee: ${total_fee} microalgos (${Utils.microToAlgo(total_fee)})`);
+console.log(`\n\nTotal fee: ${total_fee} microalgos (${Utils.microToAlgo(total_fee)} ALGO)`);

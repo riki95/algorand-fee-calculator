@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/riki95/algorand-fee-calculator/issues"
   },
-  "homepage": "https://github.com/riki95/algorand-fee-calculator#readme"
+  "homepage": "https://github.com/riki95/algorand-fee-calculator#readme",
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
 }
