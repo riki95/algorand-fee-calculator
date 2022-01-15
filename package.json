@@ -2,8 +2,9 @@
   "name": "algorand-fee-calculator",
   "version": "1.0.0",
   "description": "App to calculate Algorand fees for single/multiple TX or Assets",
-  "main": "index.js",
+  "main": "algoCalc.js",
   "scripts": {
+    "start": "node algoCalc.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
