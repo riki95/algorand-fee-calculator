@@ -10,7 +10,8 @@ class Utils {
     }
 
     static printOperationFee(operation_fee, total_new_fee, reason, ALGORAND_CURRENT_PRICE) {
-        console.log(`Added fee of ${operation_fee} microAlgos (${this.microToAlgo(operation_fee)} ALGO) for ${reason}. Total amount is now ${total_new_fee} (${this.microToAlgo(total_new_fee)} ALGO -> ${ALGORAND_CURRENT_PRICE * Utils.microToAlgo(total_new_fee)} $).`)
+        const algoTotalFee = this.microToAlgo(total_new_fee);
+        console.log(`Added fee of ${operation_fee} microAlgos (${this.microToAlgo(operation_fee)} ALGO) for ${reason}. Total amount is now ${total_new_fee} (${algoTotalFee} ALGO -> ${parseInt(ALGORAND_CURRENT_PRICE * algoTotalFee)} $).`)
     }
 
     static async getCryptoCurrentInfo(cryptoID) {

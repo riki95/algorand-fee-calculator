@@ -60,5 +60,6 @@ const freeze = args[2];
     
     
     // TOTAL
-    console.log(`\n\nTotal fee: ${total_fee} microalgos (${Utils.microToAlgo(total_fee)} ALGO -> ${ALGORAND_CURRENT_PRICE * Utils.microToAlgo(total_fee)} $)`);
+    const algoTotalFee = Utils.microToAlgo(total_fee);
+    console.log(`\n\nTotal fee: ${total_fee} microalgos (${algoTotalFee} ALGO -> ${parseInt(ALGORAND_CURRENT_PRICE * algoTotalFee)} $)`);
 })();
