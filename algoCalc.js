@@ -12,4 +12,16 @@ if (!assetsCount || !receiversCount) {
     process.exit(0);
 }
 
-console.log(`Calculating costs to create ${assetsCount} ${assetsCount > 1 ? 'assets' : 'asset'} and sending it to ${receiversCount} ${receiversCount > 1 ? 'receivers' : 'receiver'}`);
+console.log(`Calculating fees to create ${assetsCount} ${assetsCount > 1 ? 'assets' : 'asset'} and sending it to ${receiversCount} ${receiversCount > 1 ? 'receivers' : 'receiver'}\n`);
+
+
+let total_fee = 0;
+
+const nft_mint_fee = gasFee * assetsCount;
+total_fee += nft_mint_fee; // FEE - Increase fee for each nft asset that we want to create. It does not care what is the amount for the single nft.
+printOperationFee(nft_mint_fee, total_fee, `mint of ${assetsCount} ${assetsCount > 1 ? 'assets' : 'asset'}`);
+
+
+function printOperationFee(operation_fee, total_new_fee, reason) {
+    console.log(`Added fee of ${operation_fee} for ${reason}. Total amount is now ${total_new_fee}.`)
+}
