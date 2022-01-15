@@ -12,7 +12,8 @@ const receiversCount = args[1];
 const freeze = args[2];
 
 if (!assetsCount || !receiversCount) {
-    console.error('Missing parameters');
+    console.error('Missing parameters.');
+    console.error('Run with npm start [assetsCount] [receiversCount] [freezeTrueFalse]');
     process.exit(0);
 }
 
