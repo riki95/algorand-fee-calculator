@@ -37,3 +37,9 @@ Utils.printOperationFee(account_min_balance_transfer, total_fee, `transfering mi
 const receivers_opt_in = gasFee * receiversCount;
 total_fee += receivers_opt_in;
 Utils.printOperationFee(receivers_opt_in, total_fee, `opting in ${receiversCount} ${receiversCount > 1 ? 'receivers' : 'receiver'} to the asset`);
+
+
+// ASSET TRANSFER - Increase fee for each transfer of the asset.
+const transfer_asset = gasFee * receiversCount;
+total_fee += transfer_asset;
+Utils.printOperationFee(transfer_asset, total_fee, `transfering ${assetsCount} ${assetsCount > 1 ? 'assets' : 'asset'} to ${receiversCount} ${receiversCount > 1 ? 'receivers' : 'receiver'}`);
