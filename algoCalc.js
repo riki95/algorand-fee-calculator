@@ -26,8 +26,14 @@ total_fee += asset_mint_fee;
 Utils.printOperationFee(asset_mint_fee, total_fee, `mint of ${assetsCount} ${assetsCount > 1 ? 'assets' : 'asset'}`);
 
 
-// TRANSFER FUNDS TO REACH MIN BALANCE FOR RECEIVERS - Increase fee for each transfer of microAlgos that is needed to set minimum account balance to receive assets
+// TRANSFER FUNDS TO REACH MIN BALANCE FOR RECEIVERS - Increase fee for each transfer of microAlgos equal to minimum balance that is needed to set minimum account balance to receive assets. Need to add also tx fee.
 // MINBAL_number is fixed to 100000 microAlgos to have an account valid + 100000 for each asset we have, it means that to receive an asset is required 200000 microAlgos in the balance
 const account_min_balance_transfer = ((minimum_balance + minimum_balance) + gasFee) * receiversCount;
 total_fee += account_min_balance_transfer;
 Utils.printOperationFee(account_min_balance_transfer, total_fee, `transfering minimum balance needed to receive the asset`);
+
+
+// OPT IN FOR RECEIVERS - Increase fee for each opt in tx that must be done to opt in for the asset. It is multiplied by the number of receivers.
+const receivers_opt_in = gasFee * receiversCount;
+total_fee += receivers_opt_in;
+Utils.printOperationFee(receivers_opt_in, total_fee, `opting in ${receiversCount} ${receiversCount > 1 ? 'receivers' : 'receiver'} to the asset`);
