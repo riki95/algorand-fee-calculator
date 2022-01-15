@@ -13,7 +13,6 @@ const freeze = args[2];
 
 (async () => {
     const ALGORAND_CURRENT_PRICE = parseFloat((await Utils.getCryptoCurrentInfo('alg')).ticker.price);
-    console.log(ALGORAND_CURRENT_PRICE);
 
     if (!assetsCount || !receiversCount) {
         console.error('Missing parameters.');
