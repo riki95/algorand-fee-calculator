@@ -9,6 +9,7 @@ const minimum_balance = 100000;
 
 const assetsCount = args[0];
 const receiversCount = args[1];
+const freeze = args[2];
 
 if (!assetsCount || !receiversCount) {
     console.error('Missing parameters');
@@ -43,3 +44,16 @@ Utils.printOperationFee(receivers_opt_in, total_fee, `opting in ${receiversCount
 const transfer_asset = gasFee * receiversCount;
 total_fee += transfer_asset;
 Utils.printOperationFee(transfer_asset, total_fee, `transfering ${assetsCount} ${assetsCount > 1 ? 'assets' : 'asset'} to ${receiversCount} ${receiversCount > 1 ? 'receivers' : 'receiver'}`);
+
+
+// (optional) FREEZE ASSET TO RECEIVERS - it is possible that the creator wants to freeze the asset sent to receiver. This is another tx cost to consider.
+if (freeze === 'true') {
+    const freeze_asset = gasFee * receiversCount;
+    total_fee += freeze_asset;
+    Utils.printOperationFee(freeze_asset, total_fee, `freezing asset to ${receiversCount} ${receiversCount > 1 ? 'receivers' : 'receiver'}`);
+}
+
+
+
+// TOTAL
+console.log(`\n\nTotal fee: ${total_fee} microalgos (${Utils.microToAlgo(total_fee)})`);
